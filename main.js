@@ -11,7 +11,7 @@ function addList(e) {
     const del = document.createElement('span');
     list.setAttribute('class', 'list');
     list.textContent = inputValue;
-    del.textContent = '❌';
+    del.textContent = '🗑';
     main.appendChild(list);
     list.appendChild(del);
     e.preventDefault();
