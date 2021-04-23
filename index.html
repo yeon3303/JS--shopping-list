@@ -5,20 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <script src='main.js' defer></script>
     <title>Shopping List</title>
 </head>
 <body>
     <div class="app">
         <header>Shopping List</header>
-        <form class='form'>
-            <input type="text" onfocus="this.value=''" value='Add or Enter a item'>
-            <button type="submit">Add</button>
-        </form>
-        <main>
-            
-        </main>
-        <button type="button" class='btnClear'>Clear All List</button>
+        <section class="input">
+            <input class="input__text" type="text">
+            <button class="addBtn">Add</button>
+        </section>
+        <ul class="lists">
+            <li class="list">
+                <div class="list__check__item">
+                    <span class="list__check">
+                        <i class="far fa-check-circle"></i>
+                    </span>
+                    <span class="list__item">egg</span>
+                </div>
+                <div class="list__delBtn">
+                    <i class="far fa-trash-alt"></i>
+                </div>
+            </li>
+        </ul>
+        <footer class="footer">
+            <button class="clrBtn">Clear All List</button>
+        </footer>
     </div>
 </body>
 </html>
+
+<!--
+<main>
+    <form class='form'>
+        <input type="text" onfocus="this.value=''" value='Add or Enter a item'>
+        <button type="submit">Add</button>
+    </form>
+</main> 
+-->

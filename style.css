@@ -27,24 +27,11 @@ header {
   margin-bottom: 40px;
 }
 
-main {
-  height: 350px;
-  margin-bottom: 40px;
-  color: #abafb3;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-main::-webkit-scrollbar {
-  display: none;
-}
-
-form {
+.input {
   margin-bottom: 40px;
 }
 
-input {
+.input__text {
   width: 60%;
   padding: 13px 8px;
   border: none;
@@ -54,6 +41,50 @@ input {
   color: #abafb3;
 }
 
+.lists {
+  padding: 0;
+  height: 350px;
+  margin-bottom: 40px;
+  color: #abafb3;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.lists::-webkit-scrollbar {
+  display: none;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid #abafb3;
+}
+
+.list:last-child {
+  border-bottom: 1px solid #abafb3;
+}
+
+.list__check__item {
+  cursor: pointer;
+}
+
+.list__check {
+  margin-right: 20px;
+}
+
+.list__delBtn {
+  cursor: pointer;
+  transition: all 300ms ease-in;
+}
+
+.list__delBtn:hover {
+  color: red;
+  transform: rotate(135deg);
+  font-size: 18px;
+}
+
 button {
   border: none;
   border-radius: 5px;
@@ -61,20 +92,5 @@ button {
   color: white;
   padding: 13px 36px;
   outline: none;
-  cursor: pointer;
-}
-
-li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-top: 1px solid #abafb3;
-}
-
-li:last-child {
-  border-bottom: 1px solid #abafb3;
-}
-
-span {
   cursor: pointer;
 }
