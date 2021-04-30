@@ -8,10 +8,14 @@ const clrBtn = document.querySelector('.clrBtn');
 function onAdd() {
     const text = input__text.value;
 
-    if (text !== '') {
-        createList(text);
+    if (text === '') {
+        input__text.focus();
+        return;
     }
-
+    
+    const list = createList(text);
+    lists.appendChild(list);
+    list.scrollIntoView({block: "center"});
     input__text.value = '';
     input__text.focus();
 };
@@ -25,32 +29,16 @@ function createList(text) {
     list.innerHTML = `
         <div class="list__check__item" data-id=${id}>
             <span class="list__check">
-                <i class="far fa-check-circle"></i>
+                <i class="far fa-check-circle" data-value=${id}></i>
             </span>
-            <span class="list__item">${text}</span>
+            <span class="list__item" data-value=${id}>${text}</span>
         </div>
         <div class="list__delBtn">
-            <i class="far fa-trash-alt" data-id=${id}></i>
+            <i class="far fa-trash-alt" data-key=${id}></i>
         </div>
     `;
 
-    lists.appendChild(list);
-    list.scrollIntoView({block: "center"});
-    id++;
-
-    lists.addEventListener('click', event => {
-        const id = event.target.dataset.id;
-        
-        if (event.target.className === 'far fa-trash-alt') {
-            document.querySelector(`.list[data-id="${id}"]`).remove();
-        }
-
-        if (event.target.className === 'list') {
-            document.querySelector(`.list__check__item[data-id="${id}"]`).style.textDecoration = "line-through";
-            document.querySelector(`.list__check__item[data-id="${id}"]`).style.color = "green";
-        }
-    });
-    
+    id++;    
     return list;
 };
 
@@ -69,3 +57,18 @@ clrBtn.addEventListener('click', () => {
     window.location.reload();
 })
 
+lists.addEventListener('click', event => {
+        const key = event.target.dataset.key;
+        const value = event.target.dataset.value;
+        
+        if (key) {
+            const toBeDeleted = document.querySelector(`.list[data-id="${key}"]`);
+            toBeDeleted.remove();
+        }
+
+        if (value) {
+            const toBeChecked = document.querySelector(`.list__check__item[data-id="${value}"]`);
+            toBeChecked.style.textDecoration = "line-through";
+            toBeChecked.style.color = "green";
+        }
+}); 
