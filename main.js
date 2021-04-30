@@ -16,40 +16,39 @@ function onAdd() {
     input__text.focus();
 };
 
+let id = 0;
+
 function createList(text) {
     const list = document.createElement('li');
     list.setAttribute('class', 'list');
-
-    const listCheckItem = document.createElement('div');
-    listCheckItem.setAttribute('class', 'list__check__item');
-
-    const listCheck = document.createElement('span');
-    listCheck.setAttribute('class', 'list__check');
-    listCheck.innerHTML = '<i class="far fa-check-circle"></i>';
-    
-    const listItem = document.createElement('span');
-    listItem.setAttribute('class', 'list__item');
-    listItem.textContent = text;
-
-    const listDelBtn = document.createElement('div');
-    listDelBtn.setAttribute('class', 'list__delBtn');
-    listDelBtn.innerHTML = '<i class="far fa-trash-alt"></i>';
-    
-    listCheckItem.appendChild(listCheck);
-    listCheckItem.appendChild(listItem);
-    list.appendChild(listCheckItem);
-    list.appendChild(listDelBtn);
+    list.setAttribute('data-id', `${id}`)
+    list.innerHTML = `
+        <div class="list__check__item" data-id=${id}>
+            <span class="list__check">
+                <i class="far fa-check-circle"></i>
+            </span>
+            <span class="list__item">${text}</span>
+        </div>
+        <div class="list__delBtn">
+            <i class="far fa-trash-alt" data-id=${id}></i>
+        </div>
+    `;
 
     lists.appendChild(list);
     list.scrollIntoView({block: "center"});
+    id++;
 
-    listDelBtn.addEventListener('click', () => {
-        lists.removeChild(list);
-    });
+    lists.addEventListener('click', event => {
+        const id = event.target.dataset.id;
+        
+        if (event.target.className === 'far fa-trash-alt') {
+            document.querySelector(`.list[data-id="${id}"]`).remove();
+        }
 
-    list.addEventListener('click', () => {
-        list.style.textDecoration = "line-through";
-        listCheck.style.color = "green";
+        if (event.target.className === 'list') {
+            document.querySelector(`.list__check__item[data-id="${id}"]`).style.textDecoration = "line-through";
+            document.querySelector(`.list__check__item[data-id="${id}"]`).style.color = "green";
+        }
     });
     
     return list;

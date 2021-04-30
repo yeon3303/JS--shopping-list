@@ -60,14 +60,11 @@ header {
   justify-content: space-between;
   padding: 10px 0;
   border-top: 1px solid #abafb3;
+  cursor: pointer;
 }
 
 .list:last-child {
   border-bottom: 1px solid #abafb3;
-}
-
-.list__check__item {
-  cursor: pointer;
 }
 
 .list__check {
